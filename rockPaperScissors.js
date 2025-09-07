@@ -21,6 +21,14 @@ const displayResult = (message) => {
   document.querySelector('#round-result').textContent = message;
 };
 
+const checkGameWinner = () => {
+  if (humanScore === 5) {
+    displayResult('Congratulations! You won the game!');
+  } else if (computerScore === 5) {
+    displayResult('Computer won the game! Better luck next time.');
+  }
+};
+
 const playRound = (humanChoice, computerChoice) => {
   displayChoice(humanChoice, 'user');
   displayChoice(computerChoice, 'computer');
@@ -39,6 +47,7 @@ const playRound = (humanChoice, computerChoice) => {
   }
 
   updatedScore();
+  checkGameWinner();
 };
 
 document.querySelector('.choices').addEventListener('click', (event) => {
