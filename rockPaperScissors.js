@@ -12,24 +12,26 @@ const displayChoice = (choice, player) => {
   displayElement.innerHTML = `<img src="./images/icons/${choice}.png" alt="${choice}" />`;
 };
 
+const displayResult = (message) => {
+  document.querySelector('#round-result').textContent = message;
+};
+
 const playRound = (humanChoice, computerChoice) => {
   displayChoice(humanChoice, 'user');
   displayChoice(computerChoice, 'computer');
   if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
+    displayResult("It's a tie!");
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    console.log('You win this round!');
+    displayResult('You win this round!');
   } else {
     computerScore++;
-    console.log('Computer wins this round!');
+    displayResult('Computer wins this round!');
   }
-  console.log(`Computer choice: ${computerChoice}`);
-  console.log(`Human choice: ${humanChoice}`);
 };
 
 document.querySelector('.choices').addEventListener('click', (event) => {
