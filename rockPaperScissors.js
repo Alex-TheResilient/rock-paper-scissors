@@ -7,6 +7,11 @@ const getComputerChoice = () => {
   return choices[randomIndex];
 };
 
+const updatedScore = () => {
+  document.querySelector('#user-score').textContent = humanScore;
+  document.querySelector('#computer-score').textContent = computerScore;
+};
+
 const displayChoice = (choice, player) => {
   const displayElement = document.querySelector(`#${player}-display`);
   displayElement.innerHTML = `<img src="./images/icons/${choice}.png" alt="${choice}" />`;
@@ -32,6 +37,8 @@ const playRound = (humanChoice, computerChoice) => {
     computerScore++;
     displayResult('Computer wins this round!');
   }
+
+  updatedScore();
 };
 
 document.querySelector('.choices').addEventListener('click', (event) => {
