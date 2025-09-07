@@ -74,7 +74,16 @@ const checkGameWinner = () => {
     }
 
     displayResult(message, resultType);
+    disableButtons();
   }
+};
+
+const disableButtons = () => {
+  document.querySelectorAll('.choice').forEach((button) => {
+    button.disabled = true;
+    button.style.cursor = 'not-allowed';
+    button.style.opacity = '0.5';
+  });
 };
 
 const playRound = (humanChoice, computerChoice) => {
